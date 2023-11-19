@@ -3,20 +3,21 @@ layout: home
 permalink: index.html
 
 # Please update this with your repository name and project title
-repository-name: eYY-3yp-project-template
-title: Project Template
+repository-name: e19-3yp-Smart-Keyboard
+title: Smart Keyboard
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# Project Title
+# Smart Keyboard
 
 ---
 
 ## Team
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
+-  E/19/096, , E.M.C.Y.B.Ekanayake, [email](e19096@eng.pdn.ac.lk)
+-  E/19/155, B.R.U.K.Jayarathne, [email](e19155@eng.pdn.ac.lk)
+-  E/19/253, N.K.B.I.U Narasinghe, [email](e19253@eng.pdn.ac.lk)
+-  E/19/306, M.M.P.N.Rajakaruna, [email](e19306@eng.pdn.ac.lk)
 
 <!-- Image (photo/drawing of the final hardware) should be here -->
 
