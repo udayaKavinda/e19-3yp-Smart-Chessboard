@@ -42,11 +42,18 @@ Our project revolves around addressing key challenges faced by chess enthusiasts
 
 ## Solution Architecture
 
+High Level Architecture
 ![highlevel_archi](https://github.com/cepdnaclk/e19-3yp-Smart-Keyboard/assets/115540884/fc9bb615-1ec0-4e7b-aaeb-0869a08dcda3)
+
+Data Flow
+![DataFlow](https://github.com/cepdnaclk/e19-3yp-Smart-Keyboard/assets/115540884/9a6249d8-d351-4d92-9b7f-d8eb3b9cede5)
+
+Control Flow
+![control_flow](https://github.com/cepdnaclk/e19-3yp-Smart-Keyboard/assets/115540884/3b555cf6-c174-422c-94ba-a3eb565807f9)
 
 ## Hardware and Software Designs
 
-Detailed designs with many sub-sections
+
 
 ## Testing
 
