@@ -36,12 +36,13 @@ title: Smart Keyboard
 
 ## Introduction
 
-Description of the real world problem and solution, impact
+welcome to a presentation that marks the dawn of a new era in the world of chess
+Our project revolves around addressing key challenges faced by chess enthusiasts, both visually impaired and sighted.
 
 
 ## Solution Architecture
 
-High level diagram + description
+![highlevel_archi](https://github.com/cepdnaclk/e19-3yp-Smart-Keyboard/assets/115540884/fc9bb615-1ec0-4e7b-aaeb-0869a08dcda3)
 
 ## Hardware and Software Designs
 
