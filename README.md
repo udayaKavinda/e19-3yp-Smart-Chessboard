@@ -1,4 +1,3 @@
-![chessBoardModel](https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540884/113ba830-7670-407d-aea5-0d20568711ba)---
 layout: home
 permalink: index.html
 
