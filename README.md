@@ -12,7 +12,8 @@ title: Smart Keyboard
 ---
 
 ## Team
--  E/19/096, , E.M.C.Y.B.Ekanayake, [email](e19096@eng.pdn.ac.lk)
+-  E/19/096, E.M.C.Y.B.Ekanayake, [email](e19096@eng.pdn.ac.lk)
+-  E/19/100, E.P.S.G.Ellewela, [email](e19100@eng.pdn.ac.lk)
 -  E/19/155, B.R.U.K.Jayarathne, [email](e19155@eng.pdn.ac.lk)
 -  E/19/253, N.K.B.I.U Narasinghe, [email](e19253@eng.pdn.ac.lk)
 -  E/19/306, M.M.P.N.Rajakaruna, [email](e19306@eng.pdn.ac.lk)
