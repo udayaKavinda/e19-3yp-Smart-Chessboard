@@ -1,7 +1,6 @@
 layout: home
 permalink: index.html
 
-# Please update this with your repository name and project title
 repository-name: e19-3yp-Smart-Keyboard
 title: Smart Keyboard
 ---
