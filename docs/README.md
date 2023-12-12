@@ -110,7 +110,6 @@ All items and costs
 | TIP120 Transistor                    |  1         |   50 LKR    |   50 LKR  |
 | Foamboards                           |  1         | 1600 LKR    | 1600 LKR  |
 | Chess pieces & Board Sticker         |  1         | 2000 LKR    | 2000 LKR  |
-|-----------------------------------------------------------------------------|
 | TOTAL                                |            |             | 37530 LKR |
 
 ## Conclusion
