@@ -41,15 +41,26 @@ Our project revolves around addressing key challenges faced by chess enthusiasts
 
 ## Solution Architecture
 
-High Level Architecture
+##High Level Architecture
 ![highlevel_archi](https://github.com/cepdnaclk/e19-3yp-Smart-Keyboard/assets/115540884/fc9bb615-1ec0-4e7b-aaeb-0869a08dcda3)
 
-Data Flow
+##Data Flow
 ![DataFlow](https://github.com/cepdnaclk/e19-3yp-Smart-Keyboard/assets/115540884/9a6249d8-d351-4d92-9b7f-d8eb3b9cede5)
 
-Control Flow
+##Control Flow
 
-![control_flow](https://github.com/cepdnaclk/e19-3yp-Smart-Keyboard/assets/115540884/3b555cf6-c174-422c-94ba-a3eb565807f9)
+###Choose a way to play
+![control-flow-1](https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540884/5e41f244-d92a-4b7a-8587-f401529a23f4)
+
+###Playing a local game
+![Copy of sMART Chess (1)](https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540884/62fac991-d913-4d67-a959-0b89b6a23907)
+
+###Playing with a computer opponent
+![controlflow-3](https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540884/6291e740-944f-4238-8daf-a04e5eea6022)
+
+###Playing with an opponent through aws backend or lichers 
+![controlflow-4](https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540884/6e6269cc-1a1c-4b2d-b851-17a1eed633ff)
+
 
 ## Hardware and Software Designs
 ![chessBoardModel](https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540884/04cd5ef0-84ea-44dd-b3ac-513a46031d11)
