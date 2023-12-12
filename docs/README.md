@@ -72,6 +72,14 @@ Our project revolves around addressing key challenges faced by chess enthusiasts
 ## Hardware and Software Designs
 
 
+<h3>Circuit Diagram</h3>
+
+![WIRE MAP (1)](https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540884/9711a99d-9e6a-41d5-8539-abcba2f44955)
+
+<h3>User Interface</h3>
+
+![Sign Up, Login page (Community)](https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540884/f38cc830-466d-4e25-904a-bf5c3e2fb898)
+
 
 ## Testing
 
