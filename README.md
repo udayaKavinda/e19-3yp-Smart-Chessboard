@@ -42,6 +42,7 @@ Our project revolves around addressing key challenges faced by chess enthusiasts
 ## Solution Architecture
 
 <h2>High Level Architecture</h2>
+
 ![highlevel_archi](https://github.com/cepdnaclk/e19-3yp-Smart-Keyboard/assets/115540884/fc9bb615-1ec0-4e7b-aaeb-0869a08dcda3)
 
 ##Data Flow
