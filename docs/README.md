@@ -15,6 +15,7 @@ title: Smart Keyboard
 
 ## Team
 -  E/19/096, , E.M.C.Y.B.Ekanayake, [email](e19096@eng.pdn.ac.lk)
+-  E/19/100, E.P.S.G.Ellewela, [email](e19100@eng.pdn.ac.lk)
 -  E/19/155, B.R.U.K.Jayarathne, [email](e19155@eng.pdn.ac.lk)
 -  E/19/253, N.K.B.I.U Narasinghe, [email](e19253@eng.pdn.ac.lk)
 -  E/19/306, M.M.P.N.Rajakaruna, [email](e19306@eng.pdn.ac.lk)
@@ -42,15 +43,31 @@ Our project revolves around addressing key challenges faced by chess enthusiasts
 
 ## Solution Architecture
 
-High Level Architecture
+<h2>High Level Architecture</h2>
+
 ![highlevel_archi](https://github.com/cepdnaclk/e19-3yp-Smart-Keyboard/assets/115540884/fc9bb615-1ec0-4e7b-aaeb-0869a08dcda3)
 
-Data Flow
+<h2>Data Flow</h2>
+
 ![DataFlow](https://github.com/cepdnaclk/e19-3yp-Smart-Keyboard/assets/115540884/9a6249d8-d351-4d92-9b7f-d8eb3b9cede5)
 
-Control Flow
+<h2>Control Flow</h2>
 
-![control_flow](https://github.com/cepdnaclk/e19-3yp-Smart-Keyboard/assets/115540884/3b555cf6-c174-422c-94ba-a3eb565807f9)
+<h3>Choose a way to play</h3>
+
+![control-flow-1](https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540884/5e41f244-d92a-4b7a-8587-f401529a23f4)
+
+<h3>Playing a local game</h3>
+
+![Copy of sMART Chess (1)](https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540884/62fac991-d913-4d67-a959-0b89b6a23907)
+
+<h3>Playing with a computer opponent</h3>
+
+![controlflow-3](https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540884/6291e740-944f-4238-8daf-a04e5eea6022)
+
+<h3>Playing with an opponent through aws backend or lichers</h3>
+
+![controlflow-4](https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540884/6e6269cc-1a1c-4b2d-b851-17a1eed633ff)
 
 ## Hardware and Software Designs
 
