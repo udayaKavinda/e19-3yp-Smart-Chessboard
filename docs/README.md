@@ -89,9 +89,29 @@ Testing done on hardware and software, detailed + summarized results
 
 All items and costs
 
-| Item          | Quantity  | Unit Cost  | Total  |
-| ------------- |:---------:|:----------:|-------:|
-| Sample item   | 5         | 10 LKR     | 50 LKR |
+| Item                                 | Quantity   | Unit Cost   | Total     |
+| -------------------------------------|:----------:|:-----------:|----------:|
+| ESP32 Board                          |  1         | 2950 LKR    | 2950 LKR  |
+| Nema17 Stepper Motors                |  2         | 2400 LKR    | 4800 LKR  |
+| Stepper Motor Drivers (A4988)        |  2         |  400 LKR    |  800 LKR  |
+| Electro Magnet (5kg holding force)   |  1         | 2100 LKR    | 2100 LKR  |
+| 12V Power Supply Unit                |  1         | 1700 LKR    | 1700 LKR  |
+| Buck Converters                      |  2         | 1050 LKR    | 2100 LKR  |
+| Multiplexers (SparkFun-CD74HC4067)   |  4         |  550 LKR    | 2200 LKR  |
+| Steel Rods                           |  2         | 2050 LKR    | 4100 LKR  |
+| Magnets                              | 32         |   18 LKR    |  600 LKR  |
+| 8 pin Ribbon Cables                  |  8         |   56 LKR    |  450 LKR  |
+| GT2 Timing Belts                     |  3 (metres)|  500 LKR    | 1500 LKR  |
+| GT2 Pulleys                          |  2         |  600 LKR    | 1200 LKR  |
+| GT2 Toothless Pulleys                |  4         | 1100 LKR    | 4400 LKR  |
+| Arcadde Buttons                      |  2         |  200 LKR    |  400 LKR  |
+| Micro Limit Switcher Roller          |  4         |  470 LKR    | 1880 LKR  |
+| A3144 Hall Effect Sensors            | 70         |   47 LKR    | 3300 LKR  |
+| TIP120 Transistor                    |  1         |   50 LKR    |   50 LKR  |
+| Foamboards                           |  1         | 1600 LKR    | 1600 LKR  |
+| Chess pieces & Board Sticker         |  1         | 2000 LKR    | 2000 LKR  |
+|-----------------------------------------------------------------------------|
+| TOTAL                                |            |             | 37530 LKR |
 
 ## Conclusion
 
