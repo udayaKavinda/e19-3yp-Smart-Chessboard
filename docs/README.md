@@ -10,7 +10,7 @@ title: Smart Keyboard
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
 # Smart Keyboard
-https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540419/561a4954-4d56-4e5d-86ee-8ae9c11e205e
+https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540419/0446ab15-7424-4d0a-8e8a-bd66087e6662
 ---
 
 ## Team
