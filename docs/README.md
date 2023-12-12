@@ -12,7 +12,7 @@ title: Smart Keyboard
 # Smart Keyboard
 https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540419/0446ab15-7424-4d0a-8e8a-bd66087e6662
 ---
-<iframe width="560" height="315" src="https://www.youtube.com/embed/G3Cytlicv8Y?si=AfGKDiMyj7OHhOP2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+https://www.youtube.com/embed/G3Cytlicv8Y?si=AfGKDiMyj7OHhOP2
 
 ## Team
 -  E/19/096, E.M.C.Y.B.Ekanayake, [email](e19096@eng.pdn.ac.lk)
