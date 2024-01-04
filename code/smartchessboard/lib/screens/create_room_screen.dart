@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:smartchessboard/provider/room_data_provider.dart';
+import 'package:smartchessboard/resources/socket_methods.dart';
+import 'package:smartchessboard/screens/game_screen.dart';
 import 'package:smartchessboard/widgets/custom_button.dart';
-import 'package:smartchessboard/widgets/custom_textfield.dart';
 
 class CreateRoomScreen extends StatefulWidget {
   static String routeName = '/create-room';
@@ -11,16 +14,28 @@ class CreateRoomScreen extends StatefulWidget {
 }
 
 class _CreateRoomScreenState extends State<CreateRoomScreen> {
-  final TextEditingController _textController = TextEditingController();
+  final SocketMethods _socketMethods = SocketMethods();
+
+  @override
+  void initState() {
+    super.initState();
+    _socketMethods.createRoomSuccessListener(context);
+    _socketMethods.joinRoomSuccessListener(context);
+  }
 
   @override
   void dispose() {
+    _socketMethods.disposeCrateJoinSockets();
     super.dispose();
-    _textController.dispose();
+  }
+
+  void playGame(BuildContext context) {
+    Navigator.pushNamed(context, GameScreen.routeName);
   }
 
   @override
   Widget build(BuildContext context) {
+    RoomDataProvider roomDataProvider = Provider.of<RoomDataProvider>(context);
     return Scaffold(
       body: Container(
         margin: const EdgeInsets.symmetric(
@@ -31,8 +46,20 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text("Create Room"),
-            CustomTextField(hintText: "create", controller: _textController),
-            CustomButton(onTap: () {}, text: "Create Room")
+            CustomButton(
+                onTap: () => _socketMethods.createOrJoinRoom(),
+                text: "Online Game"),
+            CustomButton(
+                onTap: () {
+                  roomDataProvider.updateRoomData({
+                    "isWhite": true,
+                    "_id": "",
+                    "gameModeOnline": false,
+                    "players": []
+                  });
+                  playGame(context);
+                },
+                text: "play"),
           ],
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smartchessboard/screens/create_room_screen.dart';
+import 'package:smartchessboard/screens/game_screen.dart';
 import 'package:smartchessboard/screens/join_room_screen.dart';
 import 'package:smartchessboard/widgets/custom_button.dart';
 
@@ -15,6 +16,10 @@ class MainMenuScreen extends StatelessWidget {
     Navigator.pushNamed(context, JoinRoomScreen.routeName);
   }
 
+  void playGame(BuildContext context) {
+    Navigator.pushNamed(context, GameScreen.routeName);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +29,7 @@ class MainMenuScreen extends StatelessWidget {
           CustomButton(
               onTap: () => createRoom(context), text: "Create a new Room"),
           CustomButton(onTap: () => joinRoom(context), text: "Join a Room"),
+          CustomButton(onTap: () => playGame(context), text: "play"),
         ],
       ),
     );
