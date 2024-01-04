@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smartchessboard/resources/socket_methods.dart';
 import 'package:smartchessboard/widgets/custom_button.dart';
 import 'package:smartchessboard/widgets/custom_textfield.dart';
 
@@ -13,6 +14,14 @@ class JoinRoomScreen extends StatefulWidget {
 class _JoinRoomScreenState extends State<JoinRoomScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _gameIdController = TextEditingController();
+  final SocketMethods _socketMethods = SocketMethods();
+
+  @override
+  void initState() {
+    super.initState();
+    _socketMethods.joinRoomSuccessListener(context);
+    _socketMethods.errorOccuredListener(context);
+  }
 
   @override
   void dispose() {
@@ -35,7 +44,13 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
             const Text("join Room"),
             CustomTextField(hintText: "name", controller: _nameController),
             CustomTextField(hintText: "id", controller: _gameIdController),
-            CustomButton(onTap: () {}, text: "join Room")
+            // CustomButton(
+            // onTap: () => _socketMethods.joinRoom(
+            //       _nameController.text,
+            //       "658f318c6549389caf9719a9",
+            //       // _gameIdController.text,
+            //     ),
+            // text: "join Room")
           ],
         ),
       ),
