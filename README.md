@@ -30,8 +30,8 @@ https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540419/7386bc75-
 1. [Introduction](#introduction)
 2. [Solution Architecture](#solution-architecture )
 3. [Hardware & Software Designs](#hardware-and-software-designs)
-4. [Testing](#testing)
-5. [Detailed budget](#detailed-budget)
+4. [User Interfaces](#user-interfaces) 
+5. [Testing](#testing)
 6. [Conclusion](#conclusion)
 7. [Links](#links)
 
@@ -74,19 +74,33 @@ Our project revolves around addressing key challenges faced by chess enthusiasts
 ![chessBoardModel](https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540884/04cd5ef0-84ea-44dd-b3ac-513a46031d11)
 
 
+
 ## Testing
 
-Testing done on hardware and software, detailed + summarized results
+Flutter App Testing:
+Unit Testing - Dart's built-in test library
+Widget Testing-Dart's built-in test library
+Performance testing -Flutter Driver in “flutter_test” package
 
+Backend Testing:
+Unit Testing with Mocha
+WebSocket Testing (Tool-Simple WebSocket Client)
 
-## Conclusion
+MongoDB Database Testing:
+Integration testing with Mocha
 
-What was achieved, future developments, commercialization plans
+Hardware Testing:
+Electronic Simulations using Protius
+Bluetooth Connection Testings
+8*8 Hall Sensor Grid Testing with Multimeter
+Component Functionality Testing
+Connections Testing after soldering
+
 
 ## Links
 
-- [Project Repository](https://github.com/cepdnaclk/{{ page.repository-name }}){:target="_blank"}
-- [Project Page](https://cepdnaclk.github.io/{{ page.repository-name}}){:target="_blank"}
+- [Project Repository](https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard)
+- [Project Page](https://cepdnaclk.github.io/e19-3yp-Smart-Chessboard/)
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
 
