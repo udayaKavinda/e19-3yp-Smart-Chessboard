@@ -1,8 +1,4 @@
-layout: home
-permalink: index.html
-
-repository-name: e19-3yp-Smart-Chessboard
-title: Smart Chessboard
+Smart Chessboard
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
@@ -73,6 +69,9 @@ Our project revolves around addressing key challenges faced by chess enthusiasts
 ## Hardware and Software Designs
 ![chessBoardModel](https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540884/04cd5ef0-84ea-44dd-b3ac-513a46031d11)
 
+## User Interfaces
+![signup-signin](https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540884/50d000bc-55c1-4d79-98ff-664c2424c974)
+![game](https://github.com/cepdnaclk/e19-3yp-Smart-Chessboard/assets/115540884/3c665226-761e-442f-a79e-5bdf40e35811)
 
 
 ## Testing
