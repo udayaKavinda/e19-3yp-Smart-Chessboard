@@ -5,15 +5,16 @@ import 'package:smartchessboard/screens/create_room_screen.dart';
 import 'package:smartchessboard/screens/game_screen.dart';
 import 'package:smartchessboard/screens/join_room_screen.dart';
 import 'package:smartchessboard/screens/main_menu_screen.dart';
-import 'package:smartchessboard/screens/login.dart';
-import 'package:smartchessboard/screens/signup.dart';
+import 'package:smartchessboard/screens/login_screen.dart';
+import 'package:smartchessboard/screens/signup_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:smartchessboard/screens/welcome_screen.dart';
 
 void main() {
   //runApp(const MyApp());
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: HomePage(),
+    home: MyApp(),
   ));
 }
 
@@ -32,125 +33,16 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: "chess",
         debugShowCheckedModeBanner: false,
-        initialRoute: MainMenuScreen.routeName,
+        initialRoute: WelcomeScreen.routeName,
         routes: {
           MainMenuScreen.routeName: (context) => const MainMenuScreen(),
           JoinRoomScreen.routeName: (context) => const JoinRoomScreen(),
           CreateRoomScreen.routeName: (context) => const CreateRoomScreen(),
           GameScreen.routeName: (context) => const GameScreen(),
+          SignupPage.routeName: (context) => const SignupPage(),
+          LoginPage.routeName: (context) => const LoginPage(),
+          WelcomeScreen.routeName: (context) => const WelcomeScreen(),
         },
-      ),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Container(
-          // we will give media query height
-          // double.infinity make it big as my parent allows
-          // while MediaQuery make it big as per the screen
-
-          width: double.infinity,
-          height: MediaQuery.of(context).size.height,
-          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 50),
-          child: Column(
-            // even space distribution
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Column(
-                children: <Widget>[
-                  Text(
-                    "Welcome",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30,
-
-                    ),
-                    
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text("Experience live chess moves on a real board\nConnect, play, and enjoy the game",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.grey[700],
-                    fontSize: 15,
-
-                  ),)
-                ],
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height / 2,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/welcome.png")
-                  )
-                ),
-              ),
-
-              Column(
-                children: <Widget>[
-                  // the login button
-                  MaterialButton(
-                    minWidth:250,
-                    height: 60,
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
-
-                    },
-                    // defining the shape
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        color: Colors.black
-                      ),
-                      borderRadius: BorderRadius.circular(50)
-                    ),
-                    child: Text(
-                      "Login",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w300,
-                        fontSize: 15
-                      ),
-                    ),
-                  ),
-                  // creating the signup button
-                  SizedBox(height:20),
-                  MaterialButton(
-                    minWidth: 250,
-                    height: 60,
-                    onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> SignupPage()));
-
-                    },
-                    color: Color(0xff0095FF),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
-                      
-                    ),
-                    child: Text(
-                      "Sign up",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w300,
-                        fontSize: 15
-                      ),
-                    ),
-                  )
-
-                ],
-              )
-
-
-
-            ],
-          ),
-        ),
       ),
     );
   }
