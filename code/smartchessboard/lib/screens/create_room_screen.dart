@@ -37,32 +37,114 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
   Widget build(BuildContext context) {
     RoomDataProvider roomDataProvider = Provider.of<RoomDataProvider>(context);
     return Scaffold(
-      body: Container(
-        margin: const EdgeInsets.symmetric(
-          horizontal: 20,
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 0,
+        //brightness: Brightness.light,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios,
+          size: 20,
+          color: Colors.black,),
+
+
         ),
+      ),
+      body: Container(
+        height:650,
+        width: double.infinity,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text("Create Room"),
-            CustomButton(
-                onTap: () => _socketMethods.createOrJoinRoom(),
-                text: "Online Game"),
-            CustomButton(
-                onTap: () {
-                  roomDataProvider.updateRoomData({
-                    "isWhite": true,
-                    "_id": "",
-                    "gameModeOnline": false,
-                    "players": []
-                  });
-                  playGame(context);
-                },
-                text: "play"),
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+              Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Column(
+                  mainAxisAlignment:MainAxisAlignment.start,
+                  children: <Widget>[
+                  Text("Creat a Room",
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+                    SizedBox(height: 40,),
+                  ],
+                ),
+                      Container(
+                        height: 300,
+                        decoration: BoxDecoration(
+                        image: DecorationImage(
+                        image: AssetImage("assets/createroombackground.png"),
+                        fit: BoxFit.fitHeight
+                        ),
+
+                      ),
+                    ),
+                    SizedBox(height: 80.0,),
+                    Container(
+                        padding: EdgeInsets.only(top: 3, left: 3),
+                        child:CustomButton(
+                          onTap: () => _socketMethods.createOrJoinRoom(),
+                          text: "Online Game", 
+                            buttonColor: Color.fromARGB(255, 68, 68, 68),
+                          ),
+                      ),
+                    SizedBox(height: 20.0,),
+                    Container(
+                        padding: EdgeInsets.only(top: 0, left: 3),
+                        child:CustomButton(
+                          onTap: () {
+                            roomDataProvider.updateRoomData({
+                              "isWhite": true,
+                              "_id": "",
+                              "gameModeOnline": false,
+                              "players": []
+                            });
+                            playGame(context);
+                            },
+                          text: "Start",
+                          buttonColor: Color(0xff0095FF),),
+                    ),
+                    ],
+              ),
           ],
         ),
       ),
     );
+
   }
 }
+
+
+      // body: Container(
+      //   width:double.infinity,
+      //   margin: const EdgeInsets.symmetric(
+      //     horizontal: 20,
+      //   ),
+      //   child: Column(
+      //     mainAxisAlignment: MainAxisAlignment.center,
+      //     crossAxisAlignment: CrossAxisAlignment.center,
+      //     children: [
+      //       const Text("Create Room"),
+      //       CustomButton(
+      //           onTap: () => _socketMethods.createOrJoinRoom(),
+      //           text: "Online Game", 
+      //           buttonColor: Color(0xff0095FF),
+      //           ),
+                
+            // CustomButton(
+            //     onTap: () {
+            //       roomDataProvider.updateRoomData({
+            //         "isWhite": true,
+            //         "_id": "",
+            //         "gameModeOnline": false,
+            //         "players": []
+            //       });
+            //       playGame(context);
+            //     },
+            //     text: "Start", buttonColor: Color(0xff0095FF),),
+
+      //     ],
+      //   ),
+      // ),

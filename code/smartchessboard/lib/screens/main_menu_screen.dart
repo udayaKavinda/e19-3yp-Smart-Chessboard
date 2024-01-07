@@ -27,9 +27,9 @@ class MainMenuScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomButton(
-              onTap: () => createRoom(context), text: "Create a new Room"),
-          CustomButton(onTap: () => joinRoom(context), text: "Join a Room"),
-          CustomButton(onTap: () => playGame(context), text: "play"),
+              onTap: () => createRoom(context), text: "Create a new Room",buttonColor: Color(0xff0095FF),),
+          CustomButton(onTap: () => joinRoom(context), text: "Join a Room",buttonColor: Color(0xff0095FF),),
+          CustomButton(onTap: () => playGame(context), text: "play",buttonColor: Color(0xff0095FF),),
         ],
       ),
     );

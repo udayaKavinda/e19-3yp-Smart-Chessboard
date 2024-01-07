@@ -70,6 +70,8 @@ flutter:
      - assets/welcome.png
      - assets/loginbackground.png
      - assets/mainmenubackground.png
+     - assets/createroombackground.png
+     - assets/joinroombackground.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

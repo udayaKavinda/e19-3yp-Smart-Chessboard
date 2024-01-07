@@ -30,23 +30,23 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
 
     Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0.2, // Adds shadow to the AppBar
-        title: Container(
-          width: double.infinity,
-        ),
+       appBar: AppBar(
+        elevation: 0,
+        //brightness: Brightness.light,
+        backgroundColor: Colors.white,
         leading: IconButton(
-          color: Colors.white,
-          icon: Icon(Icons.home),
           onPressed: () {
-            // Add your home button logic here
+            Navigator.pop(context);
           },
+          icon: Icon(Icons.arrow_back_ios,
+          size: 20,
+          color: Colors.black,),
+
+
         ),
-        backgroundColor: Colors.lightBlue, // Setting the AppBar color to light blue
       ),
       body: Container(
-
-        width: 350.0,
+        width: double.infinity,
         margin: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -56,22 +56,33 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
               "Join Room",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
+            Container(
+                  padding: EdgeInsets.only(top: 100,bottom: 50),
+                  height: 300,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/joinroombackground.png"),
+                      fit: BoxFit.fitHeight
+                    ),
 
+                  ),
+            ),
             SizedBox(height: 20), // Adds space between elements
             CustomTextField(hintText: "Name", controller: _nameController),
             SizedBox(height: 10), // Adds space between elements
             CustomTextField(hintText: "ID", controller: _gameIdController),
             SizedBox(height: 20), // Adds space between elements
+
             Container(
-              padding: EdgeInsets.only(top: 3, left: 3),
+              padding: EdgeInsets.only(top: 30, left: 3),
               child: MaterialButton(
-              minWidth: 250,
               height: 60,
               onPressed: () { 
                           
               },
               color: Color(0xff0095FF),
               elevation: 0,
+              minWidth: 250,
               shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(50),
               ),
@@ -129,7 +140,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children:<Widget>[
               Text(
         hintText,
