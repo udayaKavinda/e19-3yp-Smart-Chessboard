@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:chess/chess.dart' as chesslib;
 import 'package:provider/provider.dart';
 import 'package:smartchessboard/provider/move_data_provider.dart';
 import 'package:smartchessboard/provider/room_data_provider.dart';
