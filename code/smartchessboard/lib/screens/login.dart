@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:smartchessboard/screens/signup.dart';
+//import 'package:smartchessboard/screens/main_menu_screen.dart';
+import 'package:smartchessboard/screens/mainmenu.dart';
 
 class LoginPage extends StatelessWidget {
+    static String routeName = '/login';
+
+  void SingUp(BuildContext context) {
+    Navigator.pushNamed(context, SignupPage.routeName);
+  }
+
+  void GoMainMenu(BuildContext context) {
+    Navigator.pushNamed(context, MainMenu.routeName);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,11 +56,14 @@ class LoginPage extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 40),
-                  child: Column(
-                    children: <Widget>[
-                      inputFile(label: "Email"),
-                      inputFile(label: "Password", obscureText: true)
-                    ],
+                  child: Container(
+                    width: 350.0,
+                    child: Column(
+                      children: <Widget>[
+                        inputFile(label: "Email"),
+                        inputFile(label: "Password", obscureText: true)
+                      ],
+                    ),
                   ),
                 ),
                   Padding(padding:
@@ -58,7 +73,9 @@ class LoginPage extends StatelessWidget {
                       child: MaterialButton(
                         minWidth: 250,
                         height: 60,
-                        onPressed: () {},
+                        onPressed: () { 
+                          GoMainMenu(context);
+                          },
                         color: Color(0xff0095FF),
                         elevation: 0,
                         shape: RoundedRectangleBorder(
@@ -78,17 +95,24 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
 
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text("Don't have an account?"),
-                    Text(" Sign up", style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 15,
+                    MaterialButton(
+                      minWidth: 10,
+                      hoverColor:Colors.white,
+                      highlightColor: Colors.white,
+                      child:Text(" Sign up", style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 15,
+                        )
+                      ),
+                      onPressed:(){
+                        SingUp(context);
 
-                    )
-                    )
+                    },),
+
                   ],
                 ),
 

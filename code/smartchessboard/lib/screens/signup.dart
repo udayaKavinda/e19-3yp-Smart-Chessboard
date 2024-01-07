@@ -1,8 +1,15 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:smartchessboard/screens/login.dart';
 
 class SignupPage extends StatelessWidget {
+  static String routeName = '/signup';
+
+  void LogIn(BuildContext context) {
+    Navigator.pushNamed(context, LoginPage.routeName);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +40,6 @@ class SignupPage extends StatelessWidget {
             children: <Widget>[
               Column(
                 children: <Widget>[
-                  
                   Text("Sign up",
                   style: TextStyle(
                     fontSize: 30,
@@ -49,20 +55,26 @@ class SignupPage extends StatelessWidget {
 
                 ],
               ),
-              Column(
-                children: <Widget>[
-                  inputFile(label: "Username"),
-                  inputFile(label: "Email"),
-                  inputFile(label: "Password", obscureText: true),
-                  inputFile(label: "Confirm Password ", obscureText: true),
-                ],
+              Container(
+                width: 350.0,
+                child: Column(
+                  children: <Widget>[
+                    inputFile(label: "Username"),
+                    inputFile(label: "Email"),
+                    inputFile(label: "Password", obscureText: true),
+                    inputFile(label: "Confirm Password ", obscureText: true),
+                  ],
+                ),
               ),
               Container(
-                padding: EdgeInsets.only(top: 3, left: 3),
+
+                padding: EdgeInsets.only(top:3, left: 3),
                 child: MaterialButton(
                   minWidth:250,
                   height: 60,
-                  onPressed: () {},
+                  onPressed: () {
+                    LogIn(context);
+                  },
                   color: Color(0xff0095FF),
                   elevation: 0,
                   shape: RoundedRectangleBorder(
@@ -79,26 +91,36 @@ class SignupPage extends StatelessWidget {
                   ),
                   ), 
                 ),
-
-
-
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text("Already have an account?"),
-                  Text(" Login", style:TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18
-                  ),
-                  )
+                  MaterialButton(
+                    minWidth: 10,
+                    hoverColor:Colors.white,
+                    highlightColor: Colors.white,
+                    child:Text(
+                      " Login",
+                      style:TextStyle(
+                      fontWeight: FontWeight.w300,
+                      color: Color(0xff0095FF),
+                      fontSize: 17
+                    	),
+                    ),
+                    onPressed:(){
+                      LogIn(context);
+
+                  },)
+
                 ],
-              )
+              ),
+              Container(
 
-
+                height: 100.0,
+              ),
 
             ],
-
           ),
 
 
