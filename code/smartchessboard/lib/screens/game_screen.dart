@@ -8,10 +8,9 @@ import 'package:smartchessboard/resources/socket_methods.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
 
 class GameScreen extends StatefulWidget {
-  static String routeName = '/game';
+  // static String routeName = '/game';
   const GameScreen({super.key});
   final String title = "Game Screen";
-
   @override
   State<GameScreen> createState() => _GameScreenState();
 }
