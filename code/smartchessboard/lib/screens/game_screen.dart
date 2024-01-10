@@ -1,10 +1,9 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:chess/chess.dart' as chesslib;
 import 'package:provider/provider.dart';
 import 'package:smartchessboard/provider/move_data_provider.dart';
 import 'package:smartchessboard/provider/room_data_provider.dart';
+import 'package:smartchessboard/resources/bluetooth_helper.dart';
 import 'package:smartchessboard/resources/socket_methods.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
 
@@ -18,19 +17,29 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
+  late BluetoothHelper _bluetoothHelper;
   late MoveDataProvider moveDataProvider;
+  late RoomDataProvider roomDataProvider;
   ChessBoardController controller = ChessBoardController();
   final SocketMethods _socketMethods = SocketMethods();
   late bool isWhite;
   late String roomId;
   late String nextPlayer = "white";
+  bool _isConnected = false;
 
   @override
   void initState() {
     super.initState();
+    _bluetoothHelper = BluetoothHelper(context);
     moveDataProvider = Provider.of<MoveDataProvider>(context, listen: false);
     moveDataProvider.addListener(handleChessMove);
     _socketMethods.listenChessMoves(context);
+    _bluetoothHelper.initBluetooth();
+    _bluetoothHelper.addConnectionListener((bool isConnected) {
+      setState(() {
+        _isConnected = isConnected;
+      });
+    });
 
     controller.addListener(() {
       if (controller.isCheckMate()) {
@@ -51,7 +60,15 @@ class _GameScreenState extends State<GameScreen> {
     moveDataProvider.removeListener(handleChessMove);
     controller.resetBoard();
     controller.dispose();
+    _bluetoothHelper.removeConnectionListener(_onConnectionChanged);
+    _bluetoothHelper.dispose();
     super.dispose();
+  }
+
+  void _onConnectionChanged(bool isConnected) {
+    setState(() {
+      _isConnected = isConnected;
+    });
   }
 
   Future<bool> _onWillPop() async {
@@ -78,51 +95,61 @@ class _GameScreenState extends State<GameScreen> {
         false;
   }
 
-  void opponent(RoomDataProvider roomDataProvider) {
-    if (roomDataProvider.roomData!.gameModeOnline) {
-      _socketMethods.sendChessMove(
-          controller.game.history.last.move.fromAlgebraic,
-          controller.game.history.last.move.toAlgebraic,
-          roomId,
-          nextPlayer);
-    } else {
-      List<Move> legalMoves = controller.getPossibleMoves();
-      if (legalMoves.isNotEmpty) {
-        final int randomIndex = Random().nextInt(legalMoves.length);
-        controller.makeMove(
-            from: legalMoves[randomIndex].fromAlgebraic,
-            to: legalMoves[randomIndex].toAlgebraic);
-      }
-      setState(() {
-        nextPlayer = "white" == nextPlayer ? "black" : "white";
-      });
-    }
-  }
-
   void handleChessMove() {
     final MoveDataProvider moveDataProvider =
         Provider.of<MoveDataProvider>(context, listen: false);
 
     // Check if moveData is not null before processing
     if (moveDataProvider.shortMoveData != null) {
-      // Extract necessary information (from, to, nextPlayer) and update the chess board
       String from = moveDataProvider.shortMoveData!.from;
       String to = moveDataProvider.shortMoveData!.to;
       nextPlayer = moveDataProvider.shortMoveData!.nextPlayer;
+      String? whoUpdate = moveDataProvider.shortMoveData!.whoUpdate;
 
-      // Update the chess board with the received move
-      controller.makeMove(from: from, to: to);
-
-      // Update the player turn
       setState(() {
         nextPlayer;
       });
+      if (whoUpdate != "bluetooth") {
+        _bluetoothHelper
+            .sendMessage({"from": from, "to": to, "nextPlayer": nextPlayer});
+      }
+      if (roomDataProvider.roomData!.gameModeOnline && whoUpdate != "socket") {
+        _socketMethods.sendChessMove(from, to, roomId, nextPlayer, "socket");
+      }
+      if (whoUpdate != "local") {
+        controller.makeMove(from: from, to: to);
+      }
+
+      if ((isWhite && nextPlayer == "white") ||
+          (!isWhite && nextPlayer == "black")) {
+        //my turn
+      } else {
+        //opponent turn
+        if (roomDataProvider.roomData!.gameModeOnline) {
+          //online
+        } else {
+          //local
+          List<Move> legalMoves = controller.getPossibleMoves();
+          if (legalMoves.isNotEmpty) {
+            final int randomIndex = Random().nextInt(legalMoves.length);
+            controller.makeMove(
+                from: legalMoves[randomIndex].fromAlgebraic,
+                to: legalMoves[randomIndex].toAlgebraic);
+          }
+          moveDataProvider.updateMoveData({
+            "from": controller.game.history.last.move.fromAlgebraic,
+            "to": controller.game.history.last.move.toAlgebraic,
+            "nextPlayer": "white" == nextPlayer ? "black" : "white",
+            "whoUpdate": "local",
+          });
+        }
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    RoomDataProvider roomDataProvider = Provider.of<RoomDataProvider>(context);
+    roomDataProvider = Provider.of<RoomDataProvider>(context);
     isWhite = roomDataProvider.roomData!.isWhite;
     roomId = roomDataProvider.roomData!.roomId;
     return WillPopScope(
@@ -130,6 +157,17 @@ class _GameScreenState extends State<GameScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("3yp chess"),
+          actions: [
+            IconButton(
+              icon: Icon(
+                _isConnected
+                    ? Icons.bluetooth_connected // Connected: Green icon
+                    : Icons.bluetooth_disabled, // Not connected: Grey icon
+                color: _isConnected ? Colors.green : Colors.grey,
+              ),
+              onPressed: () {},
+            ),
+          ],
         ),
         body: ChessBoard(
           controller: controller,
@@ -149,10 +187,12 @@ class _GameScreenState extends State<GameScreen> {
           enableUserMoves: (isWhite && nextPlayer == "white") ||
               (!isWhite && nextPlayer == "black"),
           onMove: () {
-            setState(() {
-              nextPlayer = "white" == nextPlayer ? "black" : "white";
+            moveDataProvider.updateMoveData({
+              "from": controller.game.history.last.move.fromAlgebraic,
+              "to": controller.game.history.last.move.toAlgebraic,
+              "nextPlayer": "white" == nextPlayer ? "black" : "white",
+              "whoUpdate": "local",
             });
-            opponent(roomDataProvider);
           },
         ),
       ),

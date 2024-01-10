@@ -4,7 +4,6 @@ import 'package:smartchessboard/provider/move_data_provider.dart'; // Import you
 import 'package:smartchessboard/screens/create_room_screen.dart';
 import 'package:smartchessboard/screens/game_screen.dart';
 import 'package:smartchessboard/screens/join_room_screen.dart';
-import 'package:smartchessboard/screens/main_menu_screen.dart';
 import 'package:smartchessboard/screens/home.dart';
 import 'package:smartchessboard/screens/login.dart';
 import 'package:smartchessboard/screens/signup.dart';
@@ -36,10 +35,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: HomePage.routeName,
         routes: {
-          HomePage.routeName:(contex)=>HomePage(),
-          LoginPage.routeName:(context)=>LoginPage(),
-          SignupPage.routeName:(context)=>SignupPage(),
-          MainMenu.routeName:(context)=>MainMenu(),
+          HomePage.routeName: (contex) => HomePage(),
+          LoginPage.routeName: (context) => LoginPage(),
+          SignupPage.routeName: (context) => SignupPage(),
+          MainMenu.routeName: (context) => MainMenu(),
           //MainMenuScreen.routeName: (context) => const MainMenuScreen(),
           JoinRoomScreen.routeName: (context) => const JoinRoomScreen(),
           CreateRoomScreen.routeName: (context) => const CreateRoomScreen(),

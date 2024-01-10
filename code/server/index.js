@@ -13,7 +13,8 @@ var io=require("socket.io")(server);
 app.use(express.json());
 
 // database
-const DB="mongodb+srv://<userName>:<password>@cluster0.jovzlek.mongodb.net/?retryWrites=true&w=majority";
+const DB="mongodb+srv://namal:qazxnmlp@cluster0.jovzlek.mongodb.net/?retryWrites=true&w=majority";
+
 mongoose.connect(DB).then(()=>{
     console.log("DB connection established");
 }).catch(err => console.log(err) );

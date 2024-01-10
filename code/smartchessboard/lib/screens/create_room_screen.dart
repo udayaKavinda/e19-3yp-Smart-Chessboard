@@ -5,6 +5,48 @@ import 'package:smartchessboard/resources/socket_methods.dart';
 import 'package:smartchessboard/screens/game_screen.dart';
 import 'package:smartchessboard/widgets/custom_button.dart';
 
+// class WaitingOverlay {
+//   late OverlayEntry _overlayEntry;
+
+//   void show(BuildContext context) {
+//     _overlayEntry = OverlayEntry(
+//       builder: (BuildContext context) => Positioned(
+//         top: MediaQuery.of(context).size.height * 0.4,
+//         left: MediaQuery.of(context).size.width * 0.35,
+//         child: Material(
+//           color: Colors.transparent,
+//           child: Container(
+//             padding: EdgeInsets.all(20.0),
+//             decoration: BoxDecoration(
+//               color: Colors.black87,
+//               borderRadius: BorderRadius.circular(10.0),
+//             ),
+//             child: Column(
+//               mainAxisSize: MainAxisSize.min,
+//               children: [
+//                 CircularProgressIndicator(
+//                   color: Colors.white,
+//                 ),
+//                 SizedBox(height: 10.0),
+//                 Text(
+//                   'Waiting...',
+//                   style: TextStyle(color: Colors.white),
+//                 ),
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+
+//     Overlay.of(context).insert(_overlayEntry);
+//   }
+
+//   void hide() {
+//     _overlayEntry?.remove();
+//   }
+// }
+
 class CreateRoomScreen extends StatefulWidget {
   static String routeName = '/create-room';
   const CreateRoomScreen({super.key});
@@ -15,9 +57,12 @@ class CreateRoomScreen extends StatefulWidget {
 
 class _CreateRoomScreenState extends State<CreateRoomScreen> {
   final SocketMethods _socketMethods = SocketMethods();
+  // final WaitingOverlay _waitingOverlay = WaitingOverlay();
+  bool clickOnce = true;
 
   @override
   void initState() {
+    // _waitingOverlay.hide();
     super.initState();
     _socketMethods.createRoomSuccessListener(context);
     _socketMethods.joinRoomSuccessListener(context);
@@ -25,6 +70,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
 
   @override
   void dispose() {
+    // _waitingOverlay.hide();
     _socketMethods.disposeCrateJoinSockets();
     super.dispose();
   }
@@ -32,6 +78,14 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
   void playGame(BuildContext context) {
     Navigator.pushNamed(context, GameScreen.routeName);
   }
+
+  // void _showOverlay(BuildContext context) {
+  //   _waitingOverlay.show(context);
+  //   // Simulate a time-consuming operation
+  //   Future.delayed(Duration(seconds: 10), () {
+  //     _waitingOverlay.hide();
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -47,72 +101,85 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back_ios,
-          size: 20,
-          color: Colors.black,),
-
-
+          icon: Icon(
+            Icons.arrow_back_ios,
+            size: 20,
+            color: Colors.black,
+          ),
         ),
       ),
       body: Container(
-        height:650,
+        height: 650,
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-              Column(
+            Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Column(
-                  mainAxisAlignment:MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                  Text("Creat a Room",
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                    SizedBox(height: 40,),
+                    Text(
+                      "Creat a Room",
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
                   ],
                 ),
-                      Container(
-                        height: 300,
-                        decoration: BoxDecoration(
-                        image: DecorationImage(
+                Container(
+                  height: 300,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
                         image: AssetImage("assets/createroombackground.png"),
-                        fit: BoxFit.fitHeight
-                        ),
-
-                      ),
-                    ),
-                    SizedBox(height: 80.0,),
-                    Container(
-                        padding: EdgeInsets.only(top: 3, left: 3),
-                        child:CustomButton(
-                          onTap: () => _socketMethods.createOrJoinRoom(),
-                          text: "Online Game", 
-                            buttonColor: Color.fromARGB(255, 68, 68, 68),
-                          ),
-                      ),
-                    SizedBox(height: 20.0,),
-                    Container(
-                        padding: EdgeInsets.only(top: 0, left: 3),
-                        child:CustomButton(
-                          onTap: () {
-                            roomDataProvider.updateRoomData({
-                              "isWhite": true,
-                              "_id": "",
-                              "gameModeOnline": false,
-                              "players": []
-                            });
-                            playGame(context);
-                            },
-                          text: "Start",
-                          buttonColor: Color(0xff0095FF),),
-                    ),
-                    ],
-              ),
+                        fit: BoxFit.fitHeight),
+                  ),
+                ),
+                SizedBox(
+                  height: 80.0,
+                ),
+                Container(
+                  padding: EdgeInsets.only(top: 3, left: 3),
+                  child: CustomButton(
+                    onTap: () {
+                      // _showOverlay(context);
+                      if (clickOnce) {
+                        clickOnce = false;
+                        _socketMethods.createOrJoinRoom();
+                      }
+                    },
+                    text: "Online Game",
+                    buttonColor: Color.fromARGB(255, 68, 68, 68),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                Container(
+                  padding: EdgeInsets.only(top: 0, left: 3),
+                  child: CustomButton(
+                    onTap: () {
+                      roomDataProvider.updateRoomData({
+                        "isWhite": true,
+                        "_id": "",
+                        "gameModeOnline": false,
+                        "players": []
+                      });
+                      playGame(context);
+                    },
+                    text: "Start",
+                    buttonColor: Color(0xff0095FF),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
     );
-
   }
 }
 

@@ -53,12 +53,14 @@ class SocketMethods {
     });
   }
 
-  void sendChessMove(String from, String to, String roomId, String nextPlayer) {
+  void sendChessMove(String from, String to, String roomId, String nextPlayer,
+      String whoUpdate) {
     _socketClient.emit('chessMove', {
       'roomId': roomId,
       'from': from,
       'to': to,
       'nextPlayer': nextPlayer,
+      'whoUpdate': whoUpdate,
     });
   }
 
