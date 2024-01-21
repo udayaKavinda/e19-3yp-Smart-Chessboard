@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smartchessboard/screens/login.dart';
+import 'package:smartchessboard/screens/mainmenu.dart';
 import 'package:smartchessboard/screens/signup.dart';
 
 class HomePage extends StatelessWidget {
@@ -13,6 +14,10 @@ class HomePage extends StatelessWidget {
     Navigator.pushNamed(context, SignupPage.routeName);
   }
 
+  void GoMainMenu(BuildContext context) {
+    //Navigator.pushNamed(context, SignupPage.routeName);
+    Navigator.pushNamed(context, MainMenu.routeName);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,35 +72,37 @@ class HomePage extends StatelessWidget {
               Column(
                 children: <Widget>[
                   // the login button
-                  MaterialButton(
-                    minWidth:250,
-                    height: 60,
-                    onPressed: () {
-                      LogIn(context);
+                  // MaterialButton(
+                  //   minWidth:250,
+                  //   height: 60,
+                  //   onPressed: () {
+                  //     //LogIn(context);
+                  //     GoMainMenu(context);
 
-                    },
-                    // defining the shape
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        color: Colors.black
-                      ),
-                      borderRadius: BorderRadius.circular(50)
-                    ),
-                    child: Text(
-                      "Login",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w300,
-                        fontSize: 15
-                      ),
-                    ),
-                  ),
+                  //   },
+                  //   // defining the shape
+                  //   shape: RoundedRectangleBorder(
+                  //     side: BorderSide(
+                  //       color: Colors.black
+                  //     ),
+                  //     borderRadius: BorderRadius.circular(50)
+                  //   ),
+                  //   child: Text(
+                  //     "Login",
+                  //     style: TextStyle(
+                  //       fontWeight: FontWeight.w300,
+                  //       fontSize: 15
+                  //     ),
+                  //   ),
+                  // ),
                   // creating the signup button
-                  SizedBox(height:20),
+                  SizedBox(height:10),
                   MaterialButton(
                     minWidth: 250,
                     height: 60,
                     onPressed: (){
-                      SingUp(context);
+                      //SingUp(context);
+                      GoMainMenu(context);
 
                     },
                     color: Color(0xff0095FF),
@@ -104,7 +111,7 @@ class HomePage extends StatelessWidget {
                       
                     ),
                     child: Text(
-                      "Sign up",
+                      "Continue",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w300,

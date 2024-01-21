@@ -3,6 +3,8 @@ import 'package:smartchessboard/screens/create_room_screen.dart';
 import 'package:smartchessboard/screens/game_screen.dart';
 import 'package:smartchessboard/screens/join_room_screen.dart';
 
+import 'package:amplify_authenticator/amplify_authenticator.dart';
+
 
 class MainMenu extends StatelessWidget {
 
@@ -23,7 +25,8 @@ class MainMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AuthenticatedView(
+    child:Scaffold(
       body: SafeArea(
         child: Container(
           // we will give media query height
@@ -156,6 +159,9 @@ class MainMenu extends StatelessWidget {
           ),
         ),
       ),
+    ),
     );
   }
+
+  
 }
