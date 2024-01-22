@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smartchessboard/screens/login.dart';
 import 'package:smartchessboard/screens/mainmenu.dart';
 import 'package:smartchessboard/screens/signup.dart';
+import 'package:smartchessboard/screens/user_guide.dart';
 
 class HomePage extends StatelessWidget {
   static String routeName = '/home';
@@ -118,7 +119,28 @@ class HomePage extends StatelessWidget {
                         fontSize: 15
                       ),
                     ),
-                  )
+                  ),
+
+
+                  Container(height: 10),
+                  // Add User Guide button
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (_){
+                        return UserGuide();
+                      })
+                      );
+                    },
+                    child: Text(
+                      "User Guide",
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.w300,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
+
 
                 ],
               )
