@@ -8,70 +8,74 @@ class UserGuide extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("User Guide"),
+        backgroundColor: const Color.fromARGB(255, 170, 143, 217), // Thematic color
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Welcome to the Chess Game User Guide!',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Welcome to the Chess Game User Guide! ♟️',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black, // Thematic color
+                ),
               ),
-            ),
-            SizedBox(height: 16),
-            Text(
-              '1. Overview',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+              const SizedBox(height: 16),
+              UserGuideSection(
+                title: 'Overview',
+                content: 'This is a new revolution in world chess game',
               ),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'Learn how to make moves, customize settings, and enjoy the game.',
-            ),
-            SizedBox(height: 16),
-            Text(
-              '2. Making Moves',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+              UserGuideSection(
+                title: 'Making Moves',
+                content: 'Tap on a chess piece and then tap on the destination square.',
               ),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'To make a move, tap on a chess piece and then tap on the destination square.',
-            ),
-            SizedBox(height: 16),
-            Text(
-              '3. Customizing Settings',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+              UserGuideSection(
+                title: 'Customizing Settings',
+                content: 'Personalize your chessboard appearance and game preferences.',
               ),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'Explore the settings to customize your chessboard appearance and game preferences.',
-            ),
-            SizedBox(height: 16),
-            Text(
-              '4. Enjoy the Game!',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+              UserGuideSection(
+                title: 'Enjoy the Game!',
+                content: 'Connect with friends, play chess, and have fun!',
               ),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'Connect with friends, play chess, and have fun!',
-            ),
-          ],
+            ],
+          ),
         ),
       ),
+    );
+  }
+}
+
+class UserGuideSection extends StatelessWidget {
+  final String title;
+  final String content;
+
+  const UserGuideSection({
+    Key? key,
+    required this.title,
+    required this.content,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ExpansionTile(
+      title: Text(
+        title,
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: Colors.deepPurple,
+        ),
+      ),
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(content),
+        ),
+      ],
     );
   }
 }
