@@ -10,8 +10,8 @@ class UserGuide extends StatelessWidget {
         title: const Text("Chess Game User Guide"),
         backgroundColor: const Color.fromARGB(255, 170, 143, 217), // Thematic color
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: const Padding(
+        padding: EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,7 +24,7 @@ class UserGuide extends StatelessWidget {
                   color: Colors.black, // Thematic color
                 ),
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
               UserGuideSection(
                 title: 'Overview',
                 content: 'Congratulations on choosing our chess app, where the timeless game of strategy meets cutting-edge technology. We\'ve taken chess to the next level by connecting it to a real chessboard through Bluetooth, providing you with a seamless and immersive experience. To make the most out of your chess journey, we\'ve created this user guide to help you navigate through the features and enjoy every move on and off the board.',
@@ -61,7 +61,7 @@ class UserGuide extends StatelessWidget {
                 title: 'Frequently Asked Questions',
                 content: 'Answers to common queries\nTroubleshooting tips\nContacting our support team',
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
               Text(
                 'We\'re thrilled to have you on board, ready to explore the world of chess with our innovative app. Whether you\'re a seasoned player or just starting, this guide is designed to enhance your experience and make every move on the chessboard a memorable one. Happy playing!\n\nFor additional assistance or feedback, visit our website or contact our support team.',
                 style: TextStyle(
@@ -92,7 +92,7 @@ class UserGuideSection extends StatelessWidget {
     return ExpansionTile(
       title: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
           color: Colors.deepPurple,
