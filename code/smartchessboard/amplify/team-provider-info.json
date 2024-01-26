@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-smartchessboard-dev-113035-authRole",
+      "UnauthRoleArn": "arn:aws:iam::725314738188:role/amplify-smartchessboard-dev-113035-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::725314738188:role/amplify-smartchessboard-dev-113035-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-smartchessboard-dev-113035-deployment",
+      "UnauthRoleName": "amplify-smartchessboard-dev-113035-unauthRole",
+      "StackName": "amplify-smartchessboard-dev-113035",
+      "StackId": "arn:aws:cloudformation:us-east-1:725314738188:stack/amplify-smartchessboard-dev-113035/66e1b190-b822-11ee-999e-0e2b9a8e2007",
+      "AmplifyAppId": "d29mi5dfy7czed"
+    },
+    "categories": {
+      "auth": {
+        "smartchessboard9808ffe2": {}
+      }
+    }
+  }
+}
