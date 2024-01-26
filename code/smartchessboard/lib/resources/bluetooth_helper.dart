@@ -10,9 +10,6 @@ class BluetoothHelper {
   FlutterBluetoothSerial _bluetooth = FlutterBluetoothSerial.instance;
   BluetoothConnection? _connection;
   List<String> messages = [];
-  List<void Function(bool isConnected)> _connectionListeners = [];
-  BuildContext _context; // Store the context
-  BluetoothHelper(this._context);
 
   Future<void> initBluetooth() async {
     Map<Permission, PermissionStatus> statuses = await [
@@ -37,14 +34,6 @@ class BluetoothHelper {
             _discoverDevices();
           }
         });
-
-        // Add connection listener after Bluetooth is enabled
-        _bluetooth
-            .onStateChanged()
-            .firstWhere((state) => state == BluetoothState.STATE_ON)
-            .then((_) {
-          _notifyConnectionListeners(true);
-        });
       }
     }
   }
@@ -61,30 +50,26 @@ class BluetoothHelper {
     BluetoothConnection.toAddress(device.address).then((connection) {
       print('Connected to ${device.name}');
       _connection = connection;
-      _listenForMessages(_context);
-      _notifyConnectionListeners(true);
+      _listenForMessages();
     }).catchError((error) {
       print('Error connecting to device: $error');
-      _notifyConnectionListeners(false);
     });
   }
 
-  void _listenForMessages(BuildContext context) {
+  void _listenForMessages() {
     _connection!.input!.listen((List<int> data) {
       String jsonString = utf8.decode(data);
       print('Received JSON: $jsonString');
 
       try {
         dynamic decodedJson = json.decode(jsonString);
-        // Provider.of<MoveDataProvider>(context, listen: false)
-        //   .updateMoveData(decodedJson);
+        ;
         print(decodedJson['from']);
       } catch (e) {
         print('Error decoding JSON: $e');
       }
     }).onDone(() {
       print('Connection closed');
-      _notifyConnectionListeners(false);
     });
   }
 
@@ -103,22 +88,6 @@ class BluetoothHelper {
   void dispose() {
     if (_connection != null) {
       _connection!.dispose();
-    }
-  }
-
-  void addConnectionListener(
-      void Function(bool isConnected) onConnectionChanged) {
-    _connectionListeners.add(onConnectionChanged);
-  }
-
-  void removeConnectionListener(
-      void Function(bool isConnected) onConnectionChanged) {
-    _connectionListeners.remove(onConnectionChanged);
-  }
-
-  void _notifyConnectionListeners(bool isConnected) {
-    for (var listener in _connectionListeners) {
-      listener(isConnected);
     }
   }
 }

@@ -1,17 +1,19 @@
-import 'package:smartchessboard/models/player.dart';
+import 'package:smartchessboard/models/profile.dart';
 
 class Room {
   bool gameModeOnline;
-  List<Player>? players;
-  bool? isJoin;
+  List<Profile>? players;
   bool isWhite;
+  String winner;
+  String end;
   String roomId;
 
   Room({
     required this.gameModeOnline,
     this.players,
-    this.isJoin,
     this.isWhite = true,
+    this.winner = "",
+    this.end = "",
     this.roomId = "",
   });
 
@@ -20,9 +22,8 @@ class Room {
       roomId: json["_id"],
       gameModeOnline: json['gameModeOnline'],
       players: (json['players'] as List<dynamic>)
-          .map((playerJson) => Player.fromJson(playerJson))
+          .map((playerJson) => Profile.fromJson(playerJson))
           .toList(),
-      isJoin: json['isJoin'],
       isWhite: json['isWhite'],
     );
   }
