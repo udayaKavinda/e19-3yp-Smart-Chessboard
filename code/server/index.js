@@ -59,6 +59,7 @@ io.on("connection",(socket)=>{
     //game-menu screen
     try{
         socket.on("createOrJoinRoom",async ()=>{
+            console.log("onlinegame");
         
         if(onlinePlayers.length==0){
             room =new Room();
@@ -99,6 +100,16 @@ io.on("connection",(socket)=>{
     });
     socket.on('gameDisconnect', async () => {
         handleGameDisconnect(socket.id);
+    });
+    socket.on('askCommunityGame', async ({profileId}) => {
+        try {
+            let eprofile =await Eprofile.findOne({"profileId":profileId});
+            console.log(eprofile);
+            io.to(eprofile.socketId).emit('communityGameAcceptorWithdraw', {"profileId":profileId});
+
+        } catch (e) {
+            console.log(e);
+        }
     });
 
     //community screen

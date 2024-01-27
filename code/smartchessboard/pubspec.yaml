@@ -45,12 +45,9 @@ dependencies:
   permission_handler: ^11.1.0
   flutter_stockfish_plugin: ^1.0.4
   window_manager: ^0.3.7
-  
-
-  amplify_flutter: ^1.0.0
-  amplify_auth_cognito: ^1.0.0
-
-  amplify_authenticator: ^1.0.0
+  # amplify_flutter: ^1.0.0
+  # amplify_auth_cognito: ^1.0.0
+  # amplify_authenticator: ^1.0.0
 
 dev_dependencies:
   flutter_test:

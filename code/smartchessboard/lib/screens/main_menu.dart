@@ -9,15 +9,15 @@ import 'package:smartchessboard/screens/game_menu_screen.dart';
 import 'package:smartchessboard/screens/game_screen.dart';
 import 'package:smartchessboard/screens/join_community.dart';
 import 'package:smartchessboard/screens/play_friends_screen.dart';
-import 'package:amplify_authenticator/amplify_authenticator.dart';
-
+import 'package:smartchessboard/screens/user_guide.dart';
+// import 'package:amplify_authenticator/amplify_authenticator.dart';
 
 class MainMenu extends StatelessWidget {
   final SocketMethods _socketMethods = SocketMethods();
   static String routeName = '/main-menu';
 
-  void PlayFriends(BuildContext context) {
-    Navigator.pushNamed(context, PlayFriendsScreen.routeName);
+  void ReadUserGuide(BuildContext context) {
+    Navigator.pushNamed(context, UserGuide.routeName);
   }
 
   void JoinCommunity(BuildContext context) {
@@ -32,8 +32,8 @@ class MainMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     _socketMethods.initializeApp(Platform.operatingSystemVersion);
     _socketMethods.initializeAppListener(context);
-    return AuthenticatedView(
-    child:Scaffold(
+    // return AuthenticatedView(
+    return Scaffold(
       body: SafeArea(
         child: Container(
           // we will give media query height
@@ -127,7 +127,7 @@ class MainMenu extends StatelessWidget {
                     height: 60,
                     onPressed: () {
                       //Navigator.push(context, MaterialPageRoute(builder: (context)=> SignupPage()));
-                      PlayFriends(context);
+                      ReadUserGuide(context);
                     },
                     color: Color.fromARGB(255, 68, 68, 68),
                     shape: RoundedRectangleBorder(
@@ -137,7 +137,7 @@ class MainMenu extends StatelessWidget {
                       // ),
                     ),
                     child: Text(
-                      "Play with Friends",
+                      "User Guide",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w300,
@@ -150,9 +150,7 @@ class MainMenu extends StatelessWidget {
           ),
         ),
       ),
-    ),
+      // ),
     );
   }
-
-  
 }

@@ -16,17 +16,17 @@ class GameMenuScreen extends StatefulWidget {
 class _GameMenuScreenState extends State<GameMenuScreen> {
   final SocketMethods _socketMethods = SocketMethods();
 
-  @override
-  void initState() {
-    super.initState();
-    _socketMethods.joinRoomSuccessListener(context);
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _socketMethods.joinRoomSuccessListener(context);
+  // }
 
-  @override
-  void dispose() {
-    _socketMethods.disposeCrateJoinSockets();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _socketMethods.disposeCrateJoinSockets();
+  //   super.dispose();
+  // }
 
   void playGame(BuildContext context) {
     Navigator.pushNamed(context, GameScreen.routeName);
@@ -49,6 +49,7 @@ class _GameMenuScreenState extends State<GameMenuScreen> {
           backgroundColor: Colors.white,
           leading: IconButton(
             onPressed: () {
+              _socketMethods.gameMenuDisconnect();
               Navigator.pop(context);
             },
             icon: Icon(

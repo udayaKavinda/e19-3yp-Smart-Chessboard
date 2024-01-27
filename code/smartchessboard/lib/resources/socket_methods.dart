@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smartchessboard/models/short_move.dart';
 import 'package:smartchessboard/provider/profile_data_provider.dart';
 import 'package:smartchessboard/provider/move_data_provider.dart';
 import 'package:smartchessboard/provider/room_data_provider.dart';
 import 'package:smartchessboard/resources/socket_client.dart';
 import 'package:smartchessboard/screens/game_screen.dart';
-import 'package:smartchessboard/utils/utils.dart';
 
 class SocketMethods {
   final _socketClient = SocketClient.instance.socket!;
+  Function? onCommunityGameAcceptorWithdraw;
 
   //game-screen
   void listenChessMoves(BuildContext context) {
@@ -35,10 +34,11 @@ class SocketMethods {
     _socketClient.emit('gameDisconnect', {});
   }
 
-  //community screen
   void disposeChessMoveSockets() {
     _socketClient.off('chessMove');
   }
+
+  //community screen
 
   void listenCommunity(BuildContext context) {
     _socketClient.on('community', (data) {
@@ -47,16 +47,28 @@ class SocketMethods {
     });
   }
 
+  void askCommunityGame(String profileId) {
+    _socketClient.emit('askCommunityGame', {"profileId": profileId});
+  }
+
+  void communityGameAcceptorWithdraw(BuildContext context) {
+    _socketClient.on('communityGameAcceptorWithdraw', (data) {
+      if (onCommunityGameAcceptorWithdraw != null) {
+        onCommunityGameAcceptorWithdraw!(data["profileId"]);
+      }
+    });
+  }
+
   void disposeCommunitySockets() {
     _socketClient.off('community');
   }
 
   void communityConnect() {
-    _socketClient.emit('communityConnect', {});
+    _socketClient.emit('communityConnect');
   }
 
   void communityDisconnect() {
-    _socketClient.emit('communityDisconnect', {});
+    _socketClient.emit('communityDisconnect');
   }
 
   //main-menu screen
@@ -92,6 +104,6 @@ class SocketMethods {
   }
 
   void gameMenuDisconnect() {
-    _socketClient.emit('gameMenuDisconnect', {});
+    _socketClient.emit('gameMenuDisconnect');
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smartchessboard/screens/login.dart';
-import 'package:smartchessboard/screens/mainmenu.dart';
+// import 'package:smartchessboard/screens/mainmenu.dart';
 import 'package:smartchessboard/screens/signup.dart';
 import 'package:smartchessboard/screens/user_guide.dart';
 
@@ -17,13 +17,12 @@ class HomePage extends StatelessWidget {
 
   void GoMainMenu(BuildContext context) {
     //Navigator.pushNamed(context, SignupPage.routeName);
-    Navigator.pushNamed(context, MainMenu.routeName);
+    // Navigator.pushNamed(context, MainMenu.routeName);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: SafeArea(
         child: Container(
           // we will give media query height
@@ -45,31 +44,27 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 30,
-
                     ),
-                    
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  Text("Experience live chess moves on a real board\nConnect, play, and enjoy the game",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.grey[700],
-                    fontSize: 15,
-
-                  ),)
+                  Text(
+                    "Experience live chess moves on a real board\nConnect, play, and enjoy the game",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.grey[700],
+                      fontSize: 15,
+                    ),
+                  )
                 ],
               ),
               Container(
                 height: MediaQuery.of(context).size.height / 2,
                 decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/welcome.png")
-                  )
-                ),
+                    image: DecorationImage(
+                        image: AssetImage("assets/welcome.png"))),
               ),
-
               Column(
                 children: <Widget>[
                   // the login button
@@ -97,56 +92,47 @@ class HomePage extends StatelessWidget {
                   //   ),
                   // ),
                   // creating the signup button
-                  SizedBox(height:10),
+                  SizedBox(height: 10),
                   MaterialButton(
                     minWidth: 250,
                     height: 60,
-                    onPressed: (){
+                    onPressed: () {
                       //SingUp(context);
                       GoMainMenu(context);
-
                     },
                     color: Color(0xff0095FF),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
-                      
                     ),
                     child: Text(
                       "Continue",
                       style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w300,
-                        fontSize: 15
-                      ),
+                          color: Colors.white,
+                          fontWeight: FontWeight.w300,
+                          fontSize: 15),
                     ),
                   ),
-
 
                   Container(height: 10),
                   // Add User Guide button
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (_){
-                        return UserGuide();
-                      })
-                      );
-                    },
-                    child: Text(
-                      "User Guide",
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.w300,
-                        fontSize: 15,
-                      ),
-                    ),
-                  ),
-
-
+                  // TextButton(
+                  //   onPressed: () {
+                  //     Navigator.of(context)
+                  //         .push(MaterialPageRoute(builder: (_) {
+                  //       return UserGuide();
+                  //     }));
+                  //   },
+                  //   child: Text(
+                  //     "User Guide",
+                  //     style: TextStyle(
+                  //       color: Colors.blue,
+                  //       fontWeight: FontWeight.w300,
+                  //       fontSize: 15,
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               )
-
-
-
             ],
           ),
         ),

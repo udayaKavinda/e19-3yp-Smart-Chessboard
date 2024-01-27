@@ -3,11 +3,11 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  amplify_db_common
   permission_handler_windows
   screen_retriever
-  window_manager
-  amplify_db_common
   url_launcher_windows
+  window_manager
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST

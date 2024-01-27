@@ -21,6 +21,8 @@ class _JoinCommunityScreenState extends State<JoinCommunityScreen> {
     super.initState();
     _socketMethods.communityConnect();
     _socketMethods.listenCommunity(context);
+    _socketMethods.communityGameAcceptorWithdraw(context);
+    _socketMethods.onCommunityGameAcceptorWithdraw = run;
     _pageController = PageController(initialPage: 0);
   }
 
@@ -29,6 +31,10 @@ class _JoinCommunityScreenState extends State<JoinCommunityScreen> {
     _socketMethods.disposeCommunitySockets();
     _pageController.dispose();
     super.dispose();
+  }
+
+  void run(String a) {
+    print(a);
   }
 
   @override
@@ -81,7 +87,7 @@ class _JoinCommunityScreenState extends State<JoinCommunityScreen> {
                 children: [
                   // Online Players
                   ListView.builder(
-                    itemCount: communityDataProvider.onlineProfilesData!.length,
+                    itemCount: length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
@@ -96,6 +102,8 @@ class _JoinCommunityScreenState extends State<JoinCommunityScreen> {
                                   TextButton(
                                     onPressed: () {
                                       // Handle the user's choice (e.g., initiate a game)
+                                      _socketMethods.askCommunityGame(
+                                          onlinePlayers[index].profileId);
                                       Navigator.of(context)
                                           .pop(); // Close the dialog
                                       // Add your logic to initiate a game here
