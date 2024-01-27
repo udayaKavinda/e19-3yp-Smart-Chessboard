@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
 import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
-import 'package:smartchessboard/chessGame/chess_engine.dart';
+// import 'package:smartchessboard/chessGame/chess_engine.dart';
 import 'package:smartchessboard/provider/move_data_provider.dart';
 import 'package:smartchessboard/provider/room_data_provider.dart';
 import 'package:smartchessboard/resources/bluetooth_helper.dart';
@@ -22,7 +22,7 @@ class _TheChessBoardState extends State<TheChessBoard> with WindowListener {
   final SocketMethods _socketMethods = SocketMethods();
   late BluetoothHelper _bluetoothHelper;
   ChessBoardController controller = ChessBoardController();
-  late ChessEngine _chessEngine;
+  // late ChessEngine _chessEngine;
   late MoveDataProvider moveDataProvider;
   late RoomDataProvider roomDataProvider;
   late bool isWhite;
@@ -37,7 +37,7 @@ class _TheChessBoardState extends State<TheChessBoard> with WindowListener {
     _bluetoothHelper = BluetoothHelper();
     _bluetoothHelper.initBluetooth();
     _socketMethods.listenChessMoves(context);
-    _chessEngine = ChessEngine();
+    // _chessEngine = ChessEngine();
     controller.addListener(() {
       if (controller.isCheckMate()) {
         roomDataProvider.updateWinnerData("CheckMate");
@@ -57,7 +57,7 @@ class _TheChessBoardState extends State<TheChessBoard> with WindowListener {
   void dispose() {
     _socketMethods.disposeChessMoveSockets();
     _bluetoothHelper.dispose();
-    _chessEngine.stopStockfish();
+    // _chessEngine.stopStockfish();
     controller.resetBoard();
     controller.dispose();
     moveDataProvider.removeListener(handleChessMove);
@@ -71,7 +71,7 @@ class _TheChessBoardState extends State<TheChessBoard> with WindowListener {
 
   @override
   void onWindowClose() async {
-    _chessEngine.stopStockfish();
+    // _chessEngine.stopStockfish();
     await Future.delayed(const Duration(milliseconds: 200));
     await windowManager.destroy();
   }
@@ -118,42 +118,42 @@ class _TheChessBoardState extends State<TheChessBoard> with WindowListener {
           //online
         } else {
           //local
-          _chessEngine.startStockfishIfNecessary();
-          _chessEngine.computeNextMove(controller.game.fen);
-          await Future.delayed(
-              Duration(milliseconds: 500 + _chessEngine.timeInMs));
-          if (_chessEngine.bestMove.substring(0, 2).length == 5) {
-            controller.makeMoveWithPromotion(
-                from: _chessEngine.bestMove.substring(0, 2),
-                to: _chessEngine.bestMove.substring(2, 4),
-                pieceToPromoteTo: _chessEngine.bestMove.substring(4));
-          } else {
-            controller.makeMove(
-                from: _chessEngine.bestMove.substring(0, 2),
-                to: _chessEngine.bestMove.substring(2));
-          }
-          moveDataProvider.updateMoveData({
-            "from": controller.game.history.last.move.fromAlgebraic,
-            "to": controller.game.history.last.move.toAlgebraic,
-            "pieceToPromoteTo":
-                controller.game.history.last.move.promotion?.name,
-            "nextPlayer": "white" == nextPlayer ? "black" : "white",
-            "whoUpdate": "local",
-          });
-
-          // List<Move> legalMoves = controller.getPossibleMoves();
-          // if (legalMoves.isNotEmpty) {
-          //   final int randomIndex = Random().nextInt(legalMoves.length);
+          // _chessEngine.startStockfishIfNecessary();
+          // _chessEngine.computeNextMove(controller.game.fen);
+          // await Future.delayed(
+          //     Duration(milliseconds: 500 + _chessEngine.timeInMs));
+          // if (_chessEngine.bestMove.substring(0, 2).length == 5) {
+          //   controller.makeMoveWithPromotion(
+          //       from: _chessEngine.bestMove.substring(0, 2),
+          //       to: _chessEngine.bestMove.substring(2, 4),
+          //       pieceToPromoteTo: _chessEngine.bestMove.substring(4));
+          // } else {
           //   controller.makeMove(
-          //       from: legalMoves[randomIndex].fromAlgebraic,
-          //       to: legalMoves[randomIndex].toAlgebraic);
+          //       from: _chessEngine.bestMove.substring(0, 2),
+          //       to: _chessEngine.bestMove.substring(2));
           // }
           // moveDataProvider.updateMoveData({
           //   "from": controller.game.history.last.move.fromAlgebraic,
           //   "to": controller.game.history.last.move.toAlgebraic,
+          //   "pieceToPromoteTo":
+          //       controller.game.history.last.move.promotion?.name,
           //   "nextPlayer": "white" == nextPlayer ? "black" : "white",
           //   "whoUpdate": "local",
           // });
+
+          List<Move> legalMoves = controller.getPossibleMoves();
+          if (legalMoves.isNotEmpty) {
+            final int randomIndex = Random().nextInt(legalMoves.length);
+            controller.makeMove(
+                from: legalMoves[randomIndex].fromAlgebraic,
+                to: legalMoves[randomIndex].toAlgebraic);
+          }
+          moveDataProvider.updateMoveData({
+            "from": controller.game.history.last.move.fromAlgebraic,
+            "to": controller.game.history.last.move.toAlgebraic,
+            "nextPlayer": "white" == nextPlayer ? "black" : "white",
+            "whoUpdate": "local",
+          });
         }
       }
     }
