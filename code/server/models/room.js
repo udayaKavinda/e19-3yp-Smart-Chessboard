@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const playerSchema = require('./players');
+const eprofileSchema = require('./eprofile');
 
 const roomSchema =new mongoose.Schema({
     gameModeOnline:{
@@ -7,12 +7,8 @@ const roomSchema =new mongoose.Schema({
         type:Boolean,
         default:true,
     },
-    players:[playerSchema],
+    players:[eprofileSchema],
 
-    isJoin:{
-        type:Boolean,
-        default:true,
-    },
     isWhite:{
         type:Boolean,
         default:true,

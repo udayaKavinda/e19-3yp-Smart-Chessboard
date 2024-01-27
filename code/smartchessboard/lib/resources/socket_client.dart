@@ -6,7 +6,7 @@ class SocketClient {
   static SocketClient? _instance;
 
   SocketClient._internal() {
-    socket = IO.io('http://192.168.1.100:3000', <String, dynamic>{
+    socket = IO.io('http://192.168.1.102:3000', <String, dynamic>{
       'transports': ['websocket'],
       'autoconnect': false,
     });
@@ -17,3 +17,4 @@ class SocketClient {
     return _instance!;
   }
 }
+// smartchess.eu-north-1.elasticbeanstalk.com

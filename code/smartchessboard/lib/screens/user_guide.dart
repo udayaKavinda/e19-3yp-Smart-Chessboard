@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class UserGuide extends StatelessWidget {
+  static String routeName = '/user-guide';
   const UserGuide({Key? key}) : super(key: key);
 
   @override
@@ -8,7 +9,8 @@ class UserGuide extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Chess Game User Guide"),
-        backgroundColor: const Color.fromARGB(255, 170, 143, 217), // Thematic color
+        backgroundColor:
+            const Color.fromARGB(255, 170, 143, 217), // Thematic color
       ),
       body: const Padding(
         padding: EdgeInsets.all(16.0),
@@ -27,39 +29,48 @@ class UserGuide extends StatelessWidget {
               SizedBox(height: 16),
               UserGuideSection(
                 title: 'Overview',
-                content: 'Congratulations on choosing our chess app, where the timeless game of strategy meets cutting-edge technology. We\'ve taken chess to the next level by connecting it to a real chessboard through Bluetooth, providing you with a seamless and immersive experience. To make the most out of your chess journey, we\'ve created this user guide to help you navigate through the features and enjoy every move on and off the board.',
+                content:
+                    'Congratulations on choosing our chess app, where the timeless game of strategy meets cutting-edge technology. We\'ve taken chess to the next level by connecting it to a real chessboard through Bluetooth, providing you with a seamless and immersive experience. To make the most out of your chess journey, we\'ve created this user guide to help you navigate through the features and enjoy every move on and off the board.',
               ),
               UserGuideSection(
                 title: 'Getting Started',
-                content: 'Connecting your real chessboard via Bluetooth\nSetting up the app for the first time\nOverview of the app interface',
+                content:
+                    'Connecting your real chessboard via Bluetooth\nSetting up the app for the first time\nOverview of the app interface',
               ),
               UserGuideSection(
                 title: 'Basic Gameplay',
-                content: 'Making moves on the virtual board\nSyncing moves with the physical chessboard\nUnderstanding feedback and notifications',
+                content:
+                    'Making moves on the virtual board\nSyncing moves with the physical chessboard\nUnderstanding feedback and notifications',
               ),
               UserGuideSection(
                 title: 'Bluetooth Connectivity',
-                content: 'Troubleshooting connection issues\nReconnecting your chessboard\nTips for optimal Bluetooth performance',
+                content:
+                    'Troubleshooting connection issues\nReconnecting your chessboard\nTips for optimal Bluetooth performance',
               ),
               UserGuideSection(
                 title: 'App Features',
-                content: 'Exploring different game modes\nCustomizing the chessboard appearance\nAccessing game history and saved games',
+                content:
+                    'Exploring different game modes\nCustomizing the chessboard appearance\nAccessing game history and saved games',
               ),
               UserGuideSection(
                 title: 'In-Game Assistance',
-                content: 'Utilizing hints and analysis tools\nAdjusting difficulty levels\nResuming interrupted games',
+                content:
+                    'Utilizing hints and analysis tools\nAdjusting difficulty levels\nResuming interrupted games',
               ),
               UserGuideSection(
                 title: 'Flutter App Integration',
-                content: 'Navigating through the app\'s various screens\nAccessing additional resources and settings\nProviding feedback and support',
+                content:
+                    'Navigating through the app\'s various screens\nAccessing additional resources and settings\nProviding feedback and support',
               ),
               UserGuideSection(
                 title: 'Chessboard Maintenance',
-                content: 'Cleaning and caring for your real chessboard\nBattery management for Bluetooth connectivity\nStorage and travel tips',
+                content:
+                    'Cleaning and caring for your real chessboard\nBattery management for Bluetooth connectivity\nStorage and travel tips',
               ),
               UserGuideSection(
                 title: 'Frequently Asked Questions',
-                content: 'Answers to common queries\nTroubleshooting tips\nContacting our support team',
+                content:
+                    'Answers to common queries\nTroubleshooting tips\nContacting our support team',
               ),
               SizedBox(height: 16),
               Text(

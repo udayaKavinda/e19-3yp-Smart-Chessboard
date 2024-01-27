@@ -41,11 +41,13 @@ dependencies:
   provider: ^6.1.1
   chess_vectors_flutter: ^1.1.0
   flutter_chess_board: ^1.0.1
-
-  amplify_flutter: ^1.0.0
-  amplify_auth_cognito: ^1.0.0
-
-  amplify_authenticator: ^1.0.0
+  flutter_bluetooth_serial: ^0.4.0
+  permission_handler: ^11.1.0
+  flutter_stockfish_plugin: ^1.0.4
+  window_manager: ^0.3.7
+  # amplify_flutter: ^1.0.0
+  # amplify_auth_cognito: ^1.0.0
+  # amplify_authenticator: ^1.0.0
 
 dev_dependencies:
   flutter_test:
