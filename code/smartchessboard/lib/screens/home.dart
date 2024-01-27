@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smartchessboard/screens/login.dart';
-// import 'package:smartchessboard/screens/mainmenu.dart';
 import 'package:smartchessboard/screens/signup.dart';
-import 'package:smartchessboard/screens/user_guide.dart';
 
 class HomePage extends StatelessWidget {
   static String routeName = '/home';
@@ -13,11 +11,6 @@ class HomePage extends StatelessWidget {
 
   void SingUp(BuildContext context) {
     Navigator.pushNamed(context, SignupPage.routeName);
-  }
-
-  void GoMainMenu(BuildContext context) {
-    //Navigator.pushNamed(context, SignupPage.routeName);
-    // Navigator.pushNamed(context, MainMenu.routeName);
   }
 
   @override
@@ -68,69 +61,42 @@ class HomePage extends StatelessWidget {
               Column(
                 children: <Widget>[
                   // the login button
-                  // MaterialButton(
-                  //   minWidth:250,
-                  //   height: 60,
-                  //   onPressed: () {
-                  //     //LogIn(context);
-                  //     GoMainMenu(context);
-
-                  //   },
-                  //   // defining the shape
-                  //   shape: RoundedRectangleBorder(
-                  //     side: BorderSide(
-                  //       color: Colors.black
-                  //     ),
-                  //     borderRadius: BorderRadius.circular(50)
-                  //   ),
-                  //   child: Text(
-                  //     "Login",
-                  //     style: TextStyle(
-                  //       fontWeight: FontWeight.w300,
-                  //       fontSize: 15
-                  //     ),
-                  //   ),
-                  // ),
-                  // creating the signup button
-                  SizedBox(height: 10),
                   MaterialButton(
                     minWidth: 250,
                     height: 60,
                     onPressed: () {
-                      //SingUp(context);
-                      GoMainMenu(context);
+                      LogIn(context);
+                    },
+                    // defining the shape
+                    shape: RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.black),
+                        borderRadius: BorderRadius.circular(50)),
+                    child: Text(
+                      "Login",
+                      style:
+                          TextStyle(fontWeight: FontWeight.w300, fontSize: 15),
+                    ),
+                  ),
+                  // creating the signup button
+                  SizedBox(height: 20),
+                  MaterialButton(
+                    minWidth: 250,
+                    height: 60,
+                    onPressed: () {
+                      SingUp(context);
                     },
                     color: Color(0xff0095FF),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: Text(
-                      "Continue",
+                      "Sign up",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w300,
                           fontSize: 15),
                     ),
-                  ),
-
-                  Container(height: 10),
-                  // Add User Guide button
-                  // TextButton(
-                  //   onPressed: () {
-                  //     Navigator.of(context)
-                  //         .push(MaterialPageRoute(builder: (_) {
-                  //       return UserGuide();
-                  //     }));
-                  //   },
-                  //   child: Text(
-                  //     "User Guide",
-                  //     style: TextStyle(
-                  //       color: Colors.blue,
-                  //       fontWeight: FontWeight.w300,
-                  //       fontSize: 15,
-                  //     ),
-                  //   ),
-                  // ),
+                  )
                 ],
               )
             ],
